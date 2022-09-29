@@ -7,3 +7,7 @@ module.exports.postANewJobService = async (data) => {
 module.exports.getAllJobPostsService = async () => {
   return await Job.find({});
 };
+
+module.exports.deleteAJobPostService = async (id) => {
+  return await Job.deleteOne({ _id: id });
+};
