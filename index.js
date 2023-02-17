@@ -1,15 +1,10 @@
-const express = require("express");
-const cors = require("cors");
-const jobRoutes = require("./routes/job.routes");
+const app = require("./app");
+require("dotenv").config();
+const { connectToDb } = require("./utils/connectToDb");
+const PORT = process.env.PORT || 5000;
 
-const app = express();
-app.use(express.json());
-app.use(cors());
+connectToDb();
 
-app.use("/api/v1/job", jobRoutes);
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.listen(PORT, () => {
+  console.log("Server running on port: ", PORT);
 });
-
-module.exports = app;
